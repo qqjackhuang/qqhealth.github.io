@@ -1,0 +1,31 @@
+<view class="page {{large ? 'large' : ''}}">
+  <view class="card item" wx:for="{{state.services}}" wx:key="id" bindtap="open" data-id="{{item.id}}">
+    <view>
+      <view class="name">{{item.name}}</view>
+      <view class="muted">{{item.desc}}</view>
+    </view>
+    <view class="price">{{item.price}}</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title"><text class="t">本周活动</text></view>
+    <view class="list-item row" wx:for="{{state.activities}}" wx:key="id" bindtap="toggle" data-id="{{item.id}}">
+      <view>
+        <view class="name">{{item.name}}</view>
+        <view class="muted">{{item.when}} · {{item.place}}</view>
+      </view>
+      <text class="tag {{item.joined ? 'green' : ''}}">{{item.joined ? '已报名' : '报名'}}</text>
+    </view>
+  </view>
+
+  <view class="card" wx:if="{{state.bookings.length}}">
+    <view class="section-title"><text class="t">我的预约</text></view>
+    <view class="list-item" wx:for="{{state.bookings}}" wx:key="id">
+      <view class="row">
+        <text class="name">{{item.name}}</text>
+        <text class="tag">{{item.status === 'pending' ? '待确认' : item.status}}</text>
+      </view>
+      <view class="muted">{{item.when}} · {{item.note}}</view>
+    </view>
+  </view>
+</view>

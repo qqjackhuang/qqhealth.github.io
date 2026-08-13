@@ -1,0 +1,34 @@
+.msg {
+  margin-bottom: 16rpx;
+}
+
+.name {
+  font-weight: 650;
+}
+
+.body {
+  margin-top: 10rpx;
+  font-size: 30rpx;
+}
+
+.composer {
+  display: flex;
+  gap: 12rpx;
+  align-items: center;
+  position: sticky;
+  bottom: 0;
+  padding: 12rpx 0 24rpx;
+  background: #f7f1e8;
+}
+
+.composer .input {
+  flex: 1;
+  margin-top: 0;
+}
+
+.send {
+  width: 140rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  flex-shrink: 0;
+}

@@ -1,0 +1,78 @@
+.hero .hello {
+  font-size: 44rpx;
+  font-weight: 700;
+  margin: 8rpx 0 4rpx;
+}
+
+.hero .room {
+  font-size: 28rpx;
+  margin-bottom: 16rpx;
+}
+
+.tags .tag {
+  margin-right: 10rpx;
+}
+
+.ico.sos {
+  background: #fde8e4;
+  color: #b42318;
+}
+
+.metrics {
+  display: flex;
+  gap: 12rpx;
+}
+
+.metric {
+  background: #fbf6f0;
+  border-radius: 20rpx;
+  padding: 16rpx;
+  flex: 1;
+}
+
+.metric .num {
+  font-size: 36rpx;
+  font-weight: 700;
+  margin: 6rpx 0;
+}
+
+.meal {
+  padding: 12rpx 0;
+  font-size: 28rpx;
+}
+
+.meal .label {
+  display: inline-block;
+  width: 48rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: center;
+  border-radius: 12rpx;
+  background: #f3e3d4;
+  color: #c45c26;
+  margin-right: 16rpx;
+  font-size: 24rpx;
+}
+
+.notice-title {
+  font-weight: 650;
+  margin: 8rpx 0 4rpx;
+}
+
+.steward {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.steward .t {
+  font-weight: 650;
+  margin-bottom: 6rpx;
+}
+
+.call {
+  background: #c45c26;
+  color: #fff;
+  padding: 12rpx 28rpx;
+  border-radius: 999rpx;
+}

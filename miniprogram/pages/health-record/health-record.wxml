@@ -1,0 +1,20 @@
+<view class="page">
+  <view class="card">
+    <view class="field">
+      <view class="label">记录类型</view>
+      <picker range="{{types}}" range-key="label" value="{{index}}" bindchange="onType">
+        <view class="picker">{{types[index].label}} · {{types[index].unit}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="label">数值</view>
+      <input class="input" placeholder="{{types[index].hint}}" value="{{value}}" bindinput="onValue" />
+    </view>
+    <view class="field">
+      <view class="label">备注（可选）</view>
+      <input class="input" placeholder="如：早餐前、服药后" value="{{note}}" bindinput="onNote" />
+    </view>
+    <view class="btn block" bindtap="submit">保存到健康档案</view>
+  </view>
+  <view class="muted tip">血压超过 140/90 或血糖超出 3.9–7.0 会标记为「关注」，家属首页可看到。</view>
+</view>

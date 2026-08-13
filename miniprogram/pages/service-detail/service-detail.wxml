@@ -1,0 +1,18 @@
+<view class="page">
+  <view class="card">
+    <view class="name">{{service.name}}</view>
+    <view class="muted">{{service.desc}}</view>
+    <view class="meta">{{service.price}} · {{service.duration}}</view>
+  </view>
+  <view class="card">
+    <view class="field">
+      <view class="label">希望时间</view>
+      <input class="input" value="{{when}}" bindinput="onWhen" />
+    </view>
+    <view class="field">
+      <view class="label">说明</view>
+      <textarea class="input" style="height: 160rpx;" value="{{note}}" bindinput="onNote" placeholder="饮食禁忌、行动协助等" />
+    </view>
+    <view class="btn block" bindtap="submit">提交预约</view>
+  </view>
+</view>

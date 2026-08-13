@@ -1,0 +1,45 @@
+<view class="page {{large ? 'large' : ''}}">
+  <view class="card profile">
+    <view class="avatar">{{state.role === 'elder' ? '住' : '家'}}</view>
+    <view>
+      <view class="name">{{state.role === 'elder' ? state.elder.name : state.user.family.name}}</view>
+      <view class="muted">当前身份：{{state.role === 'elder' ? '住户（长辈）' : '家属 · ' + state.user.family.relation}}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="list-item row">
+      <text>房间</text>
+      <text>{{state.elder.room}}</text>
+    </view>
+    <view class="list-item row">
+      <text>入住日期</text>
+      <text>{{state.elder.checkIn}}</text>
+    </view>
+    <view class="list-item row" bindtap="call" data-phone="{{state.community.phone}}">
+      <text>公寓总机</text>
+      <text class="link">{{state.community.phone}}</text>
+    </view>
+    <view class="list-item row">
+      <text>地址</text>
+      <text class="addr">{{state.community.address}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="list-item row" bindtap="switchRole">
+      <text>切换体验身份</text>
+      <text class="link">{{state.role === 'elder' ? '切到家属' : '切到住户'}}</text>
+    </view>
+    <view class="list-item row" bindtap="toggleFont">
+      <text>适老化大字</text>
+      <text class="link">{{large ? '已开启' : '已关闭'}}</text>
+    </view>
+    <view class="list-item row" bindtap="reset">
+      <text>恢复演示数据</text>
+      <text class="muted">本地</text>
+    </view>
+  </view>
+
+  <view class="muted center">亲情公寓演示版 · 数据保存在本机，尚未连接真实后端</view>
+</view>
