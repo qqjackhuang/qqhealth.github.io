@@ -1,0 +1,87 @@
+<view class="page {{large ? 'large' : ''}}">
+  <view class="hero card">
+    <view class="muted">{{state.community.name}}</view>
+    <view class="hello">{{greet}}，{{who}}</view>
+    <view class="room">{{state.elder.name}} · {{state.elder.room}}</view>
+    <view class="tags">
+      <text wx:for="{{state.elder.tags}}" wx:key="*this" class="tag">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="grid-4">
+      <view class="quick" bindtap="goVisit">
+        <view class="ico">访</view>
+        <view>预约探望</view>
+      </view>
+      <view class="quick" bindtap="goRecord">
+        <view class="ico">记</view>
+        <view>记健康</view>
+      </view>
+      <view class="quick" bindtap="goMessage">
+        <view class="ico">信</view>
+        <view>亲情留言</view>
+      </view>
+      <view class="quick" bindtap="sos">
+        <view class="ico sos">急</view>
+        <view>紧急呼叫</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">
+      <text class="t">今日健康</text>
+      <text class="muted" bindtap="goHealth">查看趋势</text>
+    </view>
+    <view class="metrics">
+      <view class="metric" bindtap="goHealth">
+        <view class="muted">血压</view>
+        <view class="num">{{state.healthLatest.bp.high}}/{{state.healthLatest.bp.low}}</view>
+        <view class="muted">{{state.healthLatest.bp.time}}</view>
+      </view>
+      <view class="metric" bindtap="goHealth">
+        <view class="muted">血糖</view>
+        <view class="num">{{state.healthLatest.glucose.value}}</view>
+        <view class="muted">{{state.healthLatest.glucose.time}}</view>
+      </view>
+      <view class="metric" bindtap="goHealth">
+        <view class="muted">心率</view>
+        <view class="num">{{state.healthLatest.heart.value}}</view>
+        <view class="muted">{{state.healthLatest.heart.time}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">
+      <text class="t">今日膳食</text>
+      <text class="muted">{{state.meals.date}}</text>
+    </view>
+    <view class="meal"><text class="label">早</text>{{state.meals.breakfast[0]}}、{{state.meals.breakfast[1]}}、{{state.meals.breakfast[2]}}</view>
+    <view class="meal"><text class="label">午</text>{{state.meals.lunch[0]}}、{{state.meals.lunch[1]}}、{{state.meals.lunch[2]}}</view>
+    <view class="meal"><text class="label">晚</text>{{state.meals.dinner[0]}}、{{state.meals.dinner[1]}}、{{state.meals.dinner[2]}}</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">
+      <text class="t">公寓通知</text>
+    </view>
+    <view class="list-item" wx:for="{{state.notices}}" wx:key="id" bindtap="goNotice" data-id="{{item.id}}">
+      <view class="row">
+        <text class="tag {{item.tag === '健康' ? 'green' : ''}}">{{item.tag}}</text>
+        <text class="muted">{{item.time}}</text>
+      </view>
+      <view class="notice-title">{{item.title}}</view>
+      <view class="muted">{{item.summary}}</view>
+    </view>
+  </view>
+
+  <view class="card steward" bindtap="callSteward">
+    <view>
+      <view class="t">联系管家 · {{state.community.steward}}</view>
+      <view class="muted">{{state.community.stewardPhone}} · 24 小时值班</view>
+    </view>
+    <view class="call">拨打</view>
+  </view>
+</view>

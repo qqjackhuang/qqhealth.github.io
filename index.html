@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>亲情公寓 · 家属与住户的智慧小程序</title>
+  <style>
+    :root { --brand:#c45c26; --bg:#f7f1e8; --text:#2c2416; --muted:#6f6558; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "PingFang SC", "Noto Sans SC", "Hiragino Sans GB", sans-serif;
+      background: linear-gradient(180deg, #f7f1e8 0%, #efe4d4 100%);
+      color: var(--text);
+    }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: start;
+    }
+    h1 { font-size: 40px; margin: 8px 0 12px; }
+    .eyebrow { color: var(--brand); font-weight: 700; letter-spacing: 0.08em; }
+    p { line-height: 1.7; color: var(--muted); }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
+    a.btn {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    a.btn.ghost { background: #fff; color: var(--brand); border: 1px solid #e7c8b4; }
+    .phone {
+      width: 360px;
+      height: 740px;
+      margin: 0 auto;
+      border: 12px solid #2c2416;
+      border-radius: 36px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 30px 80px rgba(44, 36, 22, 0.18);
+    }
+    .phone iframe { width: 100%; height: 100%; border: 0; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
+    .card { background: #fff; border-radius: 16px; padding: 16px; }
+    .card b { display: block; margin-bottom: 6px; }
+    ol { padding-left: 18px; color: var(--muted); line-height: 1.7; }
+    @media (max-width: 880px) {
+      .wrap { grid-template-columns: 1fr; }
+      .phone { width: min(360px, 100%); height: 680px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section>
+      <div class="eyebrow">QINQING APARTMENT</div>
+      <h1>亲情公寓小程序</h1>
+      <p>给住在公寓里的长辈，和远在外面的子女，准备的一款温暖、字大、好用的协同工具。当前仓库已补齐可运行原型：微信原生小程序 + 可在网页里点的 H5 演示。</p>
+      <div class="actions">
+        <a class="btn" href="preview/index.html">打开网页演示</a>
+        <a class="btn ghost" href="https://github.com/qqjackhuang/qqhealth.github.io">查看源码</a>
+      </div>
+      <div class="grid">
+        <div class="card"><b>首页</b><span>问候、房间、健康摘要、今日膳食、公寓通知、紧急呼叫</span></div>
+        <div class="card"><b>健康</b><span>血压血糖心率体重、用药打卡、异常标记「关注」</span></div>
+        <div class="card"><b>亲情</b><span>家人圈、邀请码绑定、探望预约、留言板</span></div>
+        <div class="card"><b>服务</b><span>配餐打扫陪诊护理、活动报名、预约记录</span></div>
+      </div>
+      <h2>如何用微信开发者工具打开</h2>
+      <ol>
+        <li>安装并登录<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">微信开发者工具</a>。</li>
+        <li>选择「导入项目」，目录选仓库里的 <code>miniprogram/</code>。</li>
+        <li>AppID 可先用测试号 / 游客模式 <code>touristappid</code>。</li>
+        <li>在「我的」里可切换「住户 / 家属」身份，体验两套视角。</li>
+      </ol>
+      <h2>下一步可以继续完善</h2>
+      <ol>
+        <li>申请微信小程序账号，换成正式 AppID，接入微信登录。</li>
+        <li>用云开发或自建 API 替换本地存储，让家属和住户看到同一份数据。</li>
+        <li>补真实支付、订阅消息、视频通话和健康设备上报。</li>
+      </ol>
+    </section>
+    <aside>
+      <div class="phone">
+        <iframe src="preview/index.html" title="亲情公寓演示"></iframe>
+      </div>
+    </aside>
+  </div>
+</body>
+</html>

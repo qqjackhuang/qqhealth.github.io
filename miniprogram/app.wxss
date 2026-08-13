@@ -1,0 +1,137 @@
+page {
+  background: #f7f1e8;
+  color: #2c2416;
+  font-family: "PingFang SC", "Noto Sans SC", "Hiragino Sans GB", sans-serif;
+  font-size: 28rpx;
+  line-height: 1.55;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 24rpx 24rpx 48rpx;
+  box-sizing: border-box;
+}
+
+.page.large {
+  font-size: 32rpx;
+}
+
+.card {
+  background: #fff;
+  border-radius: 28rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 28rpx rgba(92, 58, 28, 0.06);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.section-title .t {
+  font-size: 32rpx;
+  font-weight: 650;
+}
+
+.muted {
+  color: #8a7e6e;
+  font-size: 24rpx;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4rpx 14rpx;
+  border-radius: 999rpx;
+  background: #f3e3d4;
+  color: #c45c26;
+  font-size: 22rpx;
+}
+
+.tag.green {
+  background: #e4f0e8;
+  color: #2f6b4f;
+}
+
+.tag.warn {
+  background: #fde8e4;
+  color: #b42318;
+}
+
+.btn {
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  background: #c45c26;
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.btn.ghost {
+  background: #fff;
+  color: #c45c26;
+  border: 2rpx solid #e7c8b4;
+}
+
+.btn.block {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grid-4 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.quick {
+  text-align: center;
+  flex: 1;
+}
+
+.quick .ico {
+  width: 88rpx;
+  height: 88rpx;
+  margin: 0 auto 10rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  background: #f8ece3;
+}
+
+.list-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0e6da;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.input, .picker, textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: #f7f1e8;
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
+  margin-top: 12rpx;
+}
+
+.field {
+  margin-bottom: 24rpx;
+}
+
+.field .label {
+  font-weight: 600;
+}

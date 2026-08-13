@@ -1,0 +1,17 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.name {
+  font-weight: 650;
+  margin-bottom: 6rpx;
+}
+
+.price {
+  color: #c45c26;
+  font-weight: 650;
+  flex-shrink: 0;
+}

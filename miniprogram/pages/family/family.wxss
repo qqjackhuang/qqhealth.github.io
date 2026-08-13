@@ -1,0 +1,37 @@
+.invite {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.code {
+  font-size: 44rpx;
+  font-weight: 700;
+  letter-spacing: 4rpx;
+  margin: 8rpx 0;
+}
+
+.name {
+  font-weight: 650;
+}
+
+.tag {
+  margin-left: 8rpx;
+}
+
+.link {
+  color: #c45c26;
+}
+
+.btn.mini {
+  height: 64rpx;
+  line-height: 64rpx;
+  padding: 0 22rpx;
+  font-size: 26rpx;
+  flex-shrink: 0;
+}
+
+.btn.block {
+  margin-top: 8rpx;
+}

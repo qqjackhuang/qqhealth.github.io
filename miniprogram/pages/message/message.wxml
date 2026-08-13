@@ -1,0 +1,14 @@
+<view class="page">
+  <view class="card msg" wx:for="{{state.messages}}" wx:key="id">
+    <view class="row">
+      <text class="name">{{item.from}}</text>
+      <text class="muted">{{item.time}}</text>
+    </view>
+    <view class="muted">{{item.role}}</view>
+    <view class="body">{{item.text}}</view>
+  </view>
+  <view class="composer">
+    <input class="input" placeholder="给家人留一句话" value="{{text}}" bindinput="onText" confirm-type="send" bindconfirm="send" />
+    <view class="btn send" bindtap="send">发送</view>
+  </view>
+</view>

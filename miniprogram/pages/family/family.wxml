@@ -1,0 +1,39 @@
+<view class="page {{large ? 'large' : ''}}">
+  <view class="card invite">
+    <view>
+      <view class="t">家庭邀请码</view>
+      <view class="code">{{state.inviteCode}}</view>
+      <view class="muted">把邀请码发给家人，即可加入 {{state.elder.name}} 的亲情圈</view>
+    </view>
+    <view class="btn mini" bindtap="bindFamily">去绑定</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title"><text class="t">家人</text></view>
+    <view class="list-item row" wx:for="{{state.familyMembers}}" wx:key="id">
+      <view>
+        <view class="name">{{item.name}} · {{item.relation}}
+          <text wx:if="{{item.primary}}" class="tag">紧急联系人</text>
+        </view>
+        <view class="muted">{{item.city}} · 最近探望 {{item.lastVisit}}</view>
+      </view>
+      <view class="link" bindtap="call" data-phone="{{item.phone}}">电话</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">
+      <text class="t">探望安排</text>
+      <text class="muted" bindtap="visit">预约</text>
+    </view>
+    <view class="list-item" wx:for="{{state.visits}}" wx:key="id">
+      <view class="row">
+        <text class="name">{{item.who}}</text>
+        <text class="tag {{item.status === 'confirmed' ? 'green' : ''}}">{{item.status === 'confirmed' ? '已确认' : (item.status === 'done' ? '已完成' : '待确认')}}</text>
+      </view>
+      <view class="muted">{{item.date}} {{item.time}} · {{item.note}}</view>
+    </view>
+  </view>
+
+  <view class="btn block" bindtap="message">打开亲情留言板</view>
+</view>

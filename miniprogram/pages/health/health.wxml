@@ -1,0 +1,51 @@
+<view class="page {{large ? 'large' : ''}}">
+  <view class="card">
+    <view class="section-title">
+      <text class="t">{{state.elder.name}} 的健康摘要</text>
+      <text class="btn mini" bindtap="add">记一笔</text>
+    </view>
+    <view class="metrics">
+      <view class="metric">
+        <view class="muted">血压 mmHg</view>
+        <view class="num">{{state.healthLatest.bp.high}}/{{state.healthLatest.bp.low}}</view>
+      </view>
+      <view class="metric">
+        <view class="muted">血糖 mmol/L</view>
+        <view class="num">{{state.healthLatest.glucose.value}}</view>
+      </view>
+      <view class="metric">
+        <view class="muted">心率</view>
+        <view class="num">{{state.healthLatest.heart.value}}</view>
+      </view>
+      <view class="metric">
+        <view class="muted">体重 kg</view>
+        <view class="num">{{state.healthLatest.weight.value}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title"><text class="t">今日用药</text></view>
+    <view class="list-item row" wx:for="{{state.medications}}" wx:key="id" bindtap="toggleMed" data-id="{{item.id}}">
+      <view>
+        <view class="med-name">{{item.name}} · {{item.dose}}</view>
+        <view class="muted">{{item.when}}</view>
+      </view>
+      <text class="tag {{item.taken ? 'green' : 'warn'}}">{{item.taken ? '已服' : '未服'}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title"><text class="t">最近记录</text></view>
+    <view class="list-item" wx:for="{{state.healthRecords}}" wx:key="id">
+      <view class="row">
+        <text class="med-name">{{item.label}}</text>
+        <text class="tag {{item.status === 'warn' ? 'warn' : 'green'}}">{{item.status === 'warn' ? '关注' : '正常'}}</text>
+      </view>
+      <view class="row">
+        <text>{{item.value}} {{item.unit}}</text>
+        <text class="muted">{{item.time}}</text>
+      </view>
+    </view>
+  </view>
+</view>
