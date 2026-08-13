@@ -1,7 +1,7 @@
 const store = require('../../utils/store')
 
 Page({
-  data: { state: {}, large: false },
+  data: { state: store.load(), large: false },
   onShow() {
     const state = store.load()
     this.setData({ state, large: state.largeFont })

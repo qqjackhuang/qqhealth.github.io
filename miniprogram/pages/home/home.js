@@ -8,23 +8,22 @@ function greeting() {
   return '晚上好'
 }
 
-Page({
-  data: {
+function present(state) {
+  return {
+    state,
+    who: state.role === 'elder' ? state.elder.name : state.user.family.name,
     greet: greeting(),
-    state: {}
-  },
+    large: state.largeFont
+  }
+}
+
+Page({
+  data: present(store.load()),
   onShow() {
     this.refresh()
   },
   refresh() {
-    const state = store.load()
-    const who = state.role === 'elder' ? state.elder.name : state.user.family.name
-    this.setData({
-      state,
-      who,
-      greet: greeting(),
-      large: state.largeFont
-    })
+    this.setData(present(store.load()))
   },
   goNotice(e) {
     wx.navigateTo({ url: '/pages/notice-detail/notice-detail?id=' + e.currentTarget.dataset.id })

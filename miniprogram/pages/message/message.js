@@ -1,7 +1,7 @@
 const store = require('../../utils/store')
 
 Page({
-  data: { text: '', state: {} },
+  data: { text: '', state: store.load() },
   onShow() {
     const state = store.load()
     this.setData({ state })
