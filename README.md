@@ -23,9 +23,27 @@
 
 ### 2. 微信开发者工具（正式小程序工程）
 
-1. 安装 [微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
-2. 导入项目，目录选择 `miniprogram/`
-3. AppID 可先用测试号，或游客模式 `touristappid`
+**必须导入 `miniprogram/` 这一层**，不要选仓库根目录。根目录没有 `app.json`，工具会导入失败或当成空项目。
+
+1. 安装并打开 [微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)，用微信扫码登录。
+2. 先拿到带小程序代码的分支（当前还在 PR 里，未合入 `main`）：
+
+   ```bash
+   git clone -b cursor/qinqing-apartment-miniprogram-9142 https://github.com/qqjackhuang/qqhealth.github.io.git
+   ```
+
+   或在 GitHub 打开 [PR #1](https://github.com/qqjackhuang/qqhealth.github.io/pull/1)，用 Code → Download ZIP。
+3. 工具首页点 **「+」→ 导入项目**，按下面填写：
+
+   | 项 | 填什么 |
+   |---|---|
+   | 项目目录 | `…/qqhealth.github.io/miniprogram` |
+   | AppID | 勾选 **使用测试号**（还没有正式小程序账号时） |
+   | 项目名称 | 亲情公寓 |
+   | 开发模式 | 小程序 |
+
+4. 点「导入」。模拟器应出现首页「亲情公寓 · 桂花园」。
+5. 若提示 AppID 无效：项目详情 → 本地设置 → 勾选「不校验合法域名」；AppID 可继续用测试号。正式发布前再到[微信公众平台](https://mp.weixin.qq.com/)申请小程序，把 `miniprogram/project.config.json` 里的 `touristappid` 换成你的 AppID。
 
 ## 目录
 

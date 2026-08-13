@@ -1,0 +1,18 @@
+亲情公寓 · 导入微信开发者工具
+
+1. 下载并打开微信开发者工具，扫码登录。
+   https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html
+
+2. 导入目录必须是本文件夹（miniprogram），不要选上一级 qqhealth.github.io。
+   本目录里有 app.json、app.js、project.config.json，才是合法小程序工程。
+
+3. 导入时勾选「使用测试号」。
+   还没有正式 AppID 时不要改 project.config.json 里的 touristappid。
+
+4. 导入成功后，模拟器应显示：亲情公寓 · 桂花园。
+   底部五个 Tab：首页、健康、亲情、服务、我的。
+
+5. 常见失败
+   - 选错目录（选了仓库根目录）→ 重新导入 miniprogram
+   - 提示 AppID 无效 → 改勾选「使用测试号」
+   - 网络请求报错 → 项目详情 / 本地设置 / 勾选「不校验合法域名」（演示版暂无后端）
