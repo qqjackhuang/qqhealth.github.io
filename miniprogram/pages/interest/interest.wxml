@@ -1,0 +1,38 @@
+<view class="section" wx:if="{{listing}}">
+  <view class="box">意向房源：{{listing.title}}　{{listing.price}}万</view>
+</view>
+
+<view class="form">
+  <view class="field">
+    <view class="lab">姓名</view>
+    <input class="input" value="{{name}}" bindinput="onName" maxlength="10" placeholder="怎么称呼您" />
+  </view>
+  <view class="field">
+    <view class="lab">手机号</view>
+    <input class="input" value="{{phone}}" bindinput="onPhone" maxlength="11" type="number" placeholder="用于顾问回访" />
+  </view>
+  <view class="field">
+    <view class="lab">意向户型</view>
+    <picker class="picker" range="{{layouts}}" bindchange="onLayout">{{layout}}</picker>
+  </view>
+  <view class="field">
+    <view class="lab">预算（万元）</view>
+    <input class="input" value="{{budget}}" bindinput="onBudget" type="digit" placeholder="例如 280" />
+  </view>
+  <view class="field">
+    <view class="lab">方便联系时段</view>
+    <picker class="picker" range="{{times}}" bindchange="onTime">{{time}}</picker>
+  </view>
+  <view class="field">
+    <view class="lab">补充说明</view>
+    <textarea class="area" value="{{note}}" bindinput="onNote" placeholder="例如希望低楼层、要车位、需要学区等" />
+  </view>
+  <checkbox-group bindchange="onAgree">
+    <label class="check">
+      <checkbox value="1" checked="{{agree}}" />
+      <text>我已了解本登记仅用于项目顾问回访，不构成购房合同。</text>
+    </label>
+  </checkbox-group>
+  <view class="btn btn-primary btn-block" bindtap="submit">提交意向</view>
+  <view class="hint">提交后可在「我的」中查看登记记录。</view>
+</view>

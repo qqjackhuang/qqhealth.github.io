@@ -1,0 +1,11 @@
+<view class="section">
+  <view wx:if="{{!list.length}}" class="empty"><text class="t">还没有意向登记</text>去房源详情页即可提交</view>
+  <view class="card" wx:for="{{list}}" wx:key="id">
+    <view style="font-size:30rpx;font-weight:650;">{{item.listingTitle}}</view>
+    <view class="meta">{{item.name}} · {{item.phone}} · 户型 {{item.layout}} <text wx:if="{{item.budget}}">· 预算 {{item.budget}}万</text></view>
+    <view class="prose" wx:if="{{item.note}}">{{item.note}}</view>
+    <view class="cta" style="padding: 16rpx 0 0;">
+      <view class="btn btn-ghost btn-sm" data-id="{{item.id}}" bindtap="remove">删除</view>
+    </view>
+  </view>
+</view>

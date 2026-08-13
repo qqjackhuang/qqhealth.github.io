@@ -1,0 +1,2 @@
+.filters { white-space: nowrap; }
+.chip { display: inline-block; }

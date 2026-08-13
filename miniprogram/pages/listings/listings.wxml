@@ -1,0 +1,26 @@
+<input class="search" placeholder="搜索楼栋、户型、标签" value="{{keyword}}" bindinput="onSearch" confirm-type="search" />
+
+<scroll-view class="filters" scroll-x>
+  <view class="chip {{layout === item ? 'active' : ''}}" wx:for="{{layouts}}" wx:key="*this" data-name="{{item}}" bindtap="onLayout">{{item}}</view>
+  <view class="chip {{source === '业主' ? 'active' : ''}}" data-name="业主" bindtap="onSource">业主转让</view>
+  <view class="chip {{source === '项目' ? 'active' : ''}}" data-name="项目" bindtap="onSource">项目房源</view>
+</scroll-view>
+
+<view class="section">
+  <view class="section-head"><view class="h">共 {{list.length}} 套房源</view></view>
+  <view wx:if="{{!list.length}}" class="empty"><text class="t">没有符合条件的房源</text>试试换个筛选条件</view>
+  <view class="house-card" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="goDetail">
+    <view class="cover">
+      <image src="{{item.cover}}" mode="aspectFill"></image>
+      <view class="badge {{item.source === 'owner' ? 'owner' : ''}}">{{item.source === 'owner' ? '业主转让' : '项目房源'}}</view>
+    </view>
+    <view class="house-body">
+      <view class="t">{{item.title}}</view>
+      <view class="meta">{{item.rooms}} · {{item.area}}㎡ · {{item.orientation}} · {{item.floor}}层</view>
+      <view class="price">{{item.price}}万 <text class="u">{{item.unitPrice}} 元/㎡</text></view>
+      <view class="tags">
+        <view class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</view>
+      </view>
+    </view>
+  </view>
+</view>

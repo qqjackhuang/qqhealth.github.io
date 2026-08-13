@@ -1,0 +1,36 @@
+<view wx:if="{{item}}">
+  <view class="detail-cover">
+    <image src="{{item.cover}}" mode="aspectFill"></image>
+    <view class="badge {{item.source === 'owner' ? 'owner' : ''}}">{{item.source === 'owner' ? '业主转让' : '项目房源'}}</view>
+  </view>
+  <view class="panel">
+    <view style="font-size: 34rpx; font-weight: 700;">{{item.title}}</view>
+    <view class="price">{{item.price}}万 <text class="u">约 {{item.unitPrice}} 元/㎡</text></view>
+    <view class="kv">
+      <view class="item">户型<text class="b">{{item.rooms}}</text></view>
+      <view class="item">建筑面积<text class="b">{{item.area}}㎡</text></view>
+      <view class="item">朝向<text class="b">{{item.orientation}}</text></view>
+      <view class="item">楼层<text class="b">{{item.floor}}</text></view>
+      <view class="item">楼栋<text class="b">{{item.building}}</text></view>
+      <view class="item">来源<text class="b">{{item.source === 'owner' ? '业主发布' : '开发商'}}</text></view>
+    </view>
+    <view class="tags">
+      <view class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="h" style="font-size:32rpx;font-weight:650;">户型说明</view>
+    <view class="prose">{{item.desc}}</view>
+    <view class="pills">
+      <view class="p" wx:for="{{item.features}}" wx:key="*this">{{item}}</view>
+    </view>
+  </view>
+  <view class="section" wx:if="{{item.contactName}}">
+    <view class="box">业主联系人：{{item.contactName}}　{{item.contactPhone}}</view>
+  </view>
+  <view class="cta">
+    <view class="btn btn-ghost" bindtap="goList">返回列表</view>
+    <view class="btn btn-primary" bindtap="goInterest">登记购买意向</view>
+  </view>
+</view>
+<view wx:else class="empty"><text class="t">房源不存在</text>可能已下架</view>
