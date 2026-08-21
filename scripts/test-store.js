@@ -22,10 +22,16 @@ const context = {
 context.window = context;
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(root, "assets/js/data.js"), "utf8"), context);
+vm.runInContext(fs.readFileSync(path.join(root, "assets/js/roles.js"), "utf8"), context);
 vm.runInContext(fs.readFileSync(path.join(root, "assets/js/store.js"), "utf8"), context);
+vm.runInContext(fs.readFileSync(path.join(root, "assets/js/cms-store.js"), "utf8"), context);
 
 const store = context.QinqingStore;
+const cms = context.QinqingCMS;
 assert.ok(store.listings().length >= 8, "seed listings");
+assert.strictEqual(context.QINQING_ROLES.length, 4, "four roles");
+assert.ok(cms.list().length >= 4, "seed applications");
+assert.strictEqual(new Set(cms.list().map((d) => d.role)).size, 4, "four roles in one collection");
 
 const created = store.addListing({
   title: "测试业主房源",
@@ -63,5 +69,32 @@ store.removeInterest(store.interests()[0].id);
 assert.strictEqual(store.interests().length, 0);
 store.removeListing(created.id);
 assert.strictEqual(store.listingById(created.id), null);
+
+const appDoc = cms.add({
+  role: "steward",
+  name: "测试店主",
+  phone: "13800138001",
+  city: "上海",
+  fields: {
+    name: "测试店主",
+    phone: "13800138001",
+    city: "上海",
+    community: "测试小区",
+    storeType: "便利店",
+    storeName: "测试店",
+    services: ["代收快递"]
+  }
+});
+assert.ok(appDoc.id, "application id");
+assert.strictEqual(appDoc.role, "steward");
+assert.strictEqual(appDoc.status, "pending");
+const reassigned = cms.assignRole(appDoc.id, "provider");
+assert.strictEqual(reassigned.role, "provider", "assign role in same collection");
+cms.setStatus(appDoc.id, "approved");
+assert.strictEqual(cms.byId(appDoc.id).status, "approved");
+
+const exported = JSON.parse(cms.exportJSON());
+assert.strictEqual(exported.collection, "role_applications");
+assert.ok(exported.documents.some((d) => d.id === appDoc.id));
 
 console.log("store tests passed");

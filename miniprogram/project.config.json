@@ -1,5 +1,5 @@
 {
-  "description": "和悦亲情公寓",
+  "description": "亲情管家",
   "packOptions": { "ignore": [], "include": [] },
   "setting": {
     "bundle": false,
@@ -32,7 +32,7 @@
   "compileType": "miniprogram",
   "libVersion": "3.5.5",
   "appid": "touristappid",
-  "projectname": "和悦亲情公寓",
+  "projectname": "亲情管家",
   "condition": {},
   "editorSetting": { "tabIndent": "insertSpaces", "tabSize": 2 }
 }

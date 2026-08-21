@@ -7,10 +7,12 @@
     "pages/publish/publish",
     "pages/profile/profile",
     "pages/my-interests/my-interests",
-    "pages/my-listings/my-listings"
+    "pages/my-listings/my-listings",
+    "pages/apply/apply",
+    "pages/applications/applications"
   ],
   "window": {
-    "navigationBarTitleText": "和悦亲情公寓",
+    "navigationBarTitleText": "亲情管家",
     "navigationBarBackgroundColor": "#F7F1E8",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#F7F1E8",

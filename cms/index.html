@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CMS · 入驻申请</title>
+  <link rel="stylesheet" href="css/cms.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="side">
+      <div class="brand">QINQING CMS<b>亲情管家</b></div>
+      <h3>集合</h3>
+      <div class="nav-item active">入驻申请</div>
+      <h3>按角色筛选</h3>
+      <div id="filters"></div>
+      <a class="ghost" href="../index.html">打开小程序首页</a>
+      <a class="ghost" href="../join/index.html">打开四个收集页</a>
+    </aside>
+    <main class="main">
+      <div class="head">
+        <div>
+          <h1 id="collection">入驻申请</h1>
+          <p id="meta"></p>
+        </div>
+        <div class="toolbar">
+          <select class="btn" id="status-filter"></select>
+          <button class="btn" id="export-btn">导出 JSON</button>
+        </div>
+      </div>
+      <div class="table-wrap" id="table-wrap"></div>
+    </main>
+  </div>
+  <aside class="drawer" id="drawer" hidden></aside>
+  <script src="../assets/js/roles.js"></script>
+  <script src="../assets/js/cms-store.js"></script>
+  <script src="js/cms.js"></script>
+</body>
+</html>

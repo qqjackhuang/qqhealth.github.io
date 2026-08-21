@@ -1,4 +1,5 @@
 const { seedListings } = require("../data/listings");
+const cms = require("./cms");
 
 const KEYS = {
   listings: "qinqing_listings",
@@ -99,5 +100,6 @@ module.exports = {
   myListings,
   interests,
   addInterest,
-  removeInterest
+  removeInterest,
+  cms
 };

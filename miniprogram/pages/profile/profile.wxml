@@ -15,6 +15,7 @@
   <view class="menu-item" bindtap="goMine">我发布的房源<text class="r">{{mineCount}} 套 ›</text></view>
   <view class="menu-item" bindtap="goInterest">去登记意向<text class="r">›</text></view>
   <view class="menu-item" bindtap="goPublish">发布出售<text class="r">›</text></view>
+  <view class="menu-item" bindtap="goApplications">入驻申请 / 审核<text class="r">{{applyCount}} 条 ›</text></view>
 </view>
 <view class="section">
   <view class="box">置业顾问热线 {{hotline}}

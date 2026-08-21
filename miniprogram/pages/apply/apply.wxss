@@ -1,0 +1,11 @@
+.chips { display: flex; flex-wrap: wrap; gap: 12rpx; }
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  border: 1rpx solid #eadfd0;
+  background: #fffbf6;
+  border-radius: 999rpx;
+  padding: 12rpx 18rpx;
+  font-size: 24rpx;
+}

@@ -1,0 +1,23 @@
+<view class="section">
+  <view class="box">CMS 集合「入驻申请」共 {{total}} 条。四个入口的提交都在这里，可筛选并改派角色。</view>
+</view>
+<view class="chips">
+  <view class="chip {{roleFilter === 'all' ? 'on' : ''}}" data-id="all" bindtap="filterRole">全部</view>
+  <view class="chip {{roleFilter === item.id ? 'on' : ''}}" wx:for="{{roles}}" wx:key="id" data-id="{{item.id}}" bindtap="filterRole">{{item.title}}</view>
+</view>
+<view class="section" wx:if="{{list.length}}">
+  <view class="card" wx:for="{{list}}" wx:key="id">
+    <view class="t">{{item.name}} · {{item.roleTitle}}</view>
+    <view class="meta">{{item.phone}} · {{item.city}} · {{item.statusLabel}}</view>
+    <view class="meta" style="margin-top:8rpx;">{{item.summary}}</view>
+    <view class="row-actions">
+      <view class="btn btn-ghost btn-sm" data-id="{{item.id}}" bindtap="assignRole">分配角色</view>
+      <view class="btn btn-ghost btn-sm" data-id="{{item.id}}" data-to="approved" bindtap="setStatus">通过</view>
+      <view class="btn btn-ghost btn-sm" data-id="{{item.id}}" data-to="rejected" bindtap="setStatus">驳回</view>
+    </view>
+  </view>
+</view>
+<view class="empty" wx:else>
+  <text class="t">暂无记录</text>
+  从首页轮播进入对应角色页即可提交
+</view>

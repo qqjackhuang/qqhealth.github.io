@@ -1,11 +1,24 @@
-<view class="hero">
-  <image src="/images/covers/hero.jpg" mode="aspectFill"></image>
-  <view class="hero-mask">
-    <view class="eyebrow">FAMILY APARTMENT</view>
-    <view class="title">{{project.name}}</view>
-    <view class="sub">{{project.slogan}}</view>
-  </view>
-</view>
+<swiper
+  class="role-swiper"
+  indicator-dots
+  autoplay
+  circular
+  interval="4200"
+  indicator-color="rgba(255,255,255,.35)"
+  indicator-active-color="#ffffff"
+>
+  <swiper-item wx:for="{{roles}}" wx:key="id" data-id="{{item.id}}" bindtap="openRole">
+    <view class="role-slide">
+      <image src="{{item.bannerSrc}}" mode="aspectFill"></image>
+      <view class="role-mask">
+        <view class="eyebrow">{{item.eyebrow}}</view>
+        <view class="title">{{item.title}}</view>
+        <view class="sub">{{item.subtitle}} · {{item.desc}}</view>
+        <view class="cta-text">{{item.cta}} ›</view>
+      </view>
+    </view>
+  </swiper-item>
+</swiper>
 
 <view class="section">
   <view class="section-head">

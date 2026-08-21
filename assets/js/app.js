@@ -79,19 +79,35 @@
     });
   }
 
+  var slideTimer = null;
+  var slideIndex = 0;
+
   function renderHome() {
-    setNav("和悦亲情公寓", false);
+    setNav("亲情管家", false);
     setTab("home");
+    if (slideTimer) {
+      clearInterval(slideTimer);
+      slideTimer = null;
+    }
     var project = QINQING_SEED.project;
     var featured = QinqingStore.listings().slice(0, 3);
+    var slides = QINQING_ROLES.map(function (role, i) {
+      return '<a class="role-slide" href="' + role.page + '">' +
+        '<img src="' + IMG + role.banner + '" alt="' + role.title + '">' +
+        '<div class="role-mask">' +
+          '<div class="eyebrow">' + role.eyebrow + "</div>" +
+          "<h2>" + role.title + "</h2>" +
+          "<p>" + role.subtitle + " · " + role.desc + "</p>" +
+          '<div class="cta-text">' + role.cta + " ›</div>" +
+        "</div></a>";
+    }).join("");
+    var dots = QINQING_ROLES.map(function (_, i) {
+      return '<span class="' + (i === 0 ? "on" : "") + '" data-dot="' + i + '"></span>';
+    }).join("");
     app.innerHTML =
-      '<section class="hero">' +
-        '<img src="' + IMG + 'hero.jpg" alt="社区效果">' +
-        '<div class="hero-mask">' +
-          '<div class="eyebrow">FAMILY APARTMENT</div>' +
-          "<h2>" + project.name + "</h2>" +
-          "<p>" + project.slogan + "</p>" +
-        "</div>" +
+      '<section class="role-swiper" id="role-swiper">' +
+        '<div class="role-track" id="role-track">' + slides + "</div>" +
+        '<div class="role-dots" id="role-dots">' + dots + "</div>" +
       "</section>" +
       '<section class="section">' +
         '<div class="section-head"><h3>项目亮点</h3><a href="#/listings">全部房源</a></div>' +
@@ -117,6 +133,22 @@
           '<button class="btn btn-primary" data-go="#/listings">浏览房源</button>' +
         "</div>" +
       "</section>";
+
+    var track = document.getElementById("role-track");
+    var dotWrap = document.getElementById("role-dots");
+    function showSlide(i) {
+      slideIndex = (i + QINQING_ROLES.length) % QINQING_ROLES.length;
+      track.style.transform = "translateX(-" + slideIndex * 100 + "%)";
+      Array.prototype.forEach.call(dotWrap.children, function (dot, idx) {
+        dot.classList.toggle("on", idx === slideIndex);
+      });
+    }
+    dotWrap.addEventListener("click", function (e) {
+      var dot = e.target.closest("[data-dot]");
+      if (!dot) return;
+      showSlide(Number(dot.getAttribute("data-dot")));
+    });
+    slideTimer = setInterval(function () { showSlide(slideIndex + 1); }, 4200);
   }
 
   function renderListings(query) {
@@ -341,9 +373,10 @@
         '<a class="menu-item" href="#/my-listings">我发布的房源<span>' + mine.length + " 套 ›</span></a>" +
         '<a class="menu-item" href="#/interest">去登记意向<span>›</span></a>' +
         '<a class="menu-item" href="#/publish">发布出售<span>›</span></a>' +
+        '<a class="menu-item" href="#/applications">入驻申请 / 审核<span>' + QinqingCMS.list().length + " 条 ›</span></a>" +
       "</div>" +
       '<section class="section"><div class="project-box">置业顾问热线 ' + QINQING_SEED.project.hotline +
-        "<br>本演示数据保存在本机浏览器，刷新不会丢失。</div></section>";
+        "<br>本演示数据保存在本机浏览器，刷新不会丢失。<br>四个角色的收集页在「入驻申请」集合中，也可打开 <a href=\"cms/index.html\">CMS 后台</a>。</div></section>";
   }
 
   function renderMyInterests() {
@@ -391,7 +424,26 @@
     });
   }
 
+  function renderApplications() {
+    setNav("入驻审核", true);
+    setTab("profile");
+    var list = QinqingCMS.list();
+    app.innerHTML = '<section class="section"><div class="project-box">CMS 集合「入驻申请」共 ' + list.length +
+      " 条。网页版完整后台见 <a href=\"cms/index.html\">cms/index.html</a>。</div>" +
+      '<div class="card-list" style="margin-top:12px">' +
+      (list.length ? list.map(function (item) {
+        var role = QINQING_ROLE_BY_ID(item.role);
+        return '<div class="interest-card"><h4>' + item.name + " · " + (role ? role.title : item.role) + "</h4>" +
+          '<div class="meta" style="margin-top:6px">' + item.phone + " · " + (item.summary || "") + "</div></div>";
+      }).join("") : '<div class="empty"><strong>暂无入驻记录</strong>点首页轮播即可提交</div>') +
+      "</div></section>";
+  }
+
   function render() {
+    if (slideTimer) {
+      clearInterval(slideTimer);
+      slideTimer = null;
+    }
     var route = parseHash();
     var views = {
       "/": renderHome,
@@ -401,7 +453,8 @@
       "/publish": renderPublish,
       "/profile": renderProfile,
       "/my-interests": renderMyInterests,
-      "/my-listings": renderMyListings
+      "/my-listings": renderMyListings,
+      "/applications": renderApplications
     };
     var view = views[route.path] || renderHome;
     view(route.query);

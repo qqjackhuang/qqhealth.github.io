@@ -7,6 +7,7 @@ Page({
     interestsCount: 0,
     mineCount: 0,
     total: 0,
+    applyCount: 0,
     hotline: project.hotline,
     avatar: "访"
   },
@@ -17,8 +18,12 @@ Page({
       avatar: (profile.name || "访").slice(0, 1),
       interestsCount: store.interests().length,
       mineCount: store.myListings().length,
-      total: store.listings().length
+      total: store.listings().length,
+      applyCount: store.cms.list().length
     });
+  },
+  goApplications() {
+    wx.navigateTo({ url: "/pages/applications/applications" });
   },
   goInterests() {
     wx.navigateTo({ url: "/pages/my-interests/my-interests" });

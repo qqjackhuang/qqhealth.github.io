@@ -181,6 +181,57 @@ body {
 }
 .hero-mask p { margin-top: 6px; font-size: 13px; opacity: 0.92; }
 
+.role-swiper {
+  margin: 8px 16px 0;
+  border-radius: 22px;
+  overflow: hidden;
+  height: 210px;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+.role-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.45s ease;
+}
+.role-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+  color: #fff;
+}
+.role-slide img { width: 100%; height: 100%; object-fit: cover; }
+.role-slide .role-mask {
+  position: absolute;
+  inset: 0;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(180deg, rgba(42,36,32,0.08), rgba(42,36,32,0.78));
+}
+.role-slide h2 {
+  font-size: 26px;
+  font-family: "Songti SC", "Noto Serif SC", "STSong", serif;
+}
+.role-slide p { font-size: 13px; margin-top: 4px; opacity: 0.92; }
+.role-slide .cta-text { margin-top: 10px; font-size: 13px; }
+.role-dots {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+.role-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+}
+.role-dots span.on { background: #fff; }
+
 .section { padding: 18px 16px 0; }
 .section-head {
   display: flex;
