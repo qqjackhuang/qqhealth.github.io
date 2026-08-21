@@ -1,0 +1,25 @@
+<view class="section">
+  <view class="box">仅限本社区业主发布二手房源。信息将展示在房源列表，并标注「业主转让」。</view>
+</view>
+<view class="form">
+  <view class="field"><view class="lab">房源标题</view><input class="input" bindinput="onTitle" maxlength="30" placeholder="例如 3 号楼南向三室急售" /></view>
+  <view class="field"><view class="lab">楼栋</view><input class="input" bindinput="onBuilding" maxlength="12" placeholder="例如 8 号楼" /></view>
+  <view class="field"><view class="lab">户型</view><picker class="picker" range="{{layouts}}" bindchange="onLayout">{{layout}}</picker></view>
+  <view class="field"><view class="lab">户型结构</view><input class="input" bindinput="onRooms" placeholder="例如 3室2厅1卫" /></view>
+  <view class="field"><view class="lab">建筑面积（㎡）</view><input class="input" bindinput="onArea" type="digit" placeholder="例如 108" /></view>
+  <view class="field"><view class="lab">楼层</view><input class="input" bindinput="onFloor" placeholder="例如 11 / 18" /></view>
+  <view class="field"><view class="lab">朝向</view><picker class="picker" range="{{orientations}}" bindchange="onOrientation">{{orientation}}</picker></view>
+  <view class="field"><view class="lab">期望售价（万元）</view><input class="input" bindinput="onPrice" type="digit" placeholder="例如 260" /></view>
+  <view class="field"><view class="lab">房源介绍</view><textarea class="area" bindinput="onDesc" placeholder="装修、满二满五、看房时间、是否含车位等" /></view>
+  <view class="field"><view class="lab">联系人</view><input class="input" bindinput="onContactName" maxlength="10" placeholder="怎么称呼" /></view>
+  <view class="field"><view class="lab">联系电话</view><input class="input" bindinput="onContactPhone" maxlength="11" type="number" /></view>
+  <view class="field">
+    <view class="lab">封面图片（可选）</view>
+    <view class="photo" bindtap="choosePhoto">
+      <image wx:if="{{cover}}" src="{{cover}}" mode="aspectFill"></image>
+      <text wx:else>选择图片</text>
+    </view>
+    <view class="hint">不上传则使用默认社区封面。</view>
+  </view>
+  <view class="btn btn-sage btn-block" bindtap="submit">发布房源</view>
+</view>

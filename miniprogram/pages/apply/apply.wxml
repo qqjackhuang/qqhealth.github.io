@@ -1,0 +1,38 @@
+<view class="hero" wx:if="{{role}}">
+  <image src="{{banner}}" mode="aspectFill"></image>
+  <view class="hero-mask">
+    <view class="eyebrow">{{role.eyebrow}}</view>
+    <view class="title">{{role.title}}</view>
+    <view class="sub">{{role.subtitle}} · {{role.desc}}</view>
+  </view>
+</view>
+
+<view class="section" wx:if="{{role}}">
+  <view class="box">{{role.intro}}
+
+提交后进入 CMS 集合「入驻申请」，角色为「{{role.title}}」。</view>
+</view>
+
+<view class="form" wx:if="{{role}}">
+  <view class="field" wx:for="{{fields}}" wx:key="name">
+    <view class="lab">{{item.label}}<text wx:if="{{item.required}}" style="color:#c45c26"> *</text></view>
+
+    <textarea wx:if="{{item.type === 'textarea'}}" class="area" data-name="{{item.name}}" value="{{item.value}}" placeholder="{{item.placeholder}}" bindinput="onInput"></textarea>
+
+    <picker wx:elif="{{item.type === 'select'}}" class="picker" data-name="{{item.name}}" range="{{item.options}}" bindchange="onSelect">{{item.value || '请选择'}}</picker>
+
+    <checkbox-group wx:elif="{{item.type === 'checks'}}" data-name="{{item.name}}" bindchange="onChecks">
+      <view class="chips">
+        <label class="chip" wx:for="{{item.optionItems}}" wx:for-item="opt" wx:key="value">
+          <checkbox value="{{opt.value}}" checked="{{opt.checked}}" />{{opt.value}}
+        </label>
+      </view>
+    </checkbox-group>
+
+    <input wx:else class="input" data-name="{{item.name}}" value="{{item.value}}" placeholder="{{item.placeholder}}" maxlength="{{item.maxlength || 40}}" bindinput="onInput" />
+  </view>
+
+  <view class="hint" wx:if="{{error}}" style="color:#b5452a;">{{error}}</view>
+  <view class="btn btn-block" style="background: {{role.accent}}; color:#fff;" bindtap="submit">{{role.cta}}</view>
+  <view class="hint">四个网页与本页写入同一集合，可在「入驻审核」里改派角色。</view>
+</view>

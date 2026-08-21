@@ -1,0 +1,71 @@
+<swiper
+  class="role-swiper"
+  indicator-dots
+  autoplay
+  circular
+  interval="4200"
+  indicator-color="rgba(255,255,255,.35)"
+  indicator-active-color="#ffffff"
+>
+  <swiper-item wx:for="{{roles}}" wx:key="id" data-id="{{item.id}}" bindtap="openRole">
+    <view class="role-slide">
+      <image src="{{item.bannerSrc}}" mode="aspectFill"></image>
+      <view class="role-mask">
+        <view class="eyebrow">{{item.eyebrow}}</view>
+        <view class="title">{{item.title}}</view>
+        <view class="sub">{{item.subtitle}} · {{item.desc}}</view>
+        <view class="cta-text">{{item.cta}} ›</view>
+      </view>
+    </view>
+  </swiper-item>
+</swiper>
+
+<view class="section">
+  <view class="section-head">
+    <view class="h">项目亮点</view>
+    <view class="link" bindtap="goListings">全部房源</view>
+  </view>
+  <view class="highlights">
+    <view class="hl-card" wx:for="{{project.highlights}}" wx:key="title">
+      <view class="t">{{item.title}}</view>
+      <view class="d">{{item.desc}}</view>
+    </view>
+  </view>
+  <view class="stats">
+    <view class="stat"><view class="b">{{project.openDate}}</view><view class="s">销售状态</view></view>
+    <view class="stat"><view class="b">{{project.greening}}</view><view class="s">绿地率</view></view>
+    <view class="stat"><view class="b">{{project.parking}}</view><view class="s">车位配比</view></view>
+  </view>
+</view>
+
+<view class="section">
+  <view class="section-head">
+    <view class="h">热门房源</view>
+    <view class="link" bindtap="goListings">查看更多</view>
+  </view>
+  <view class="house-card" wx:for="{{featured}}" wx:key="id" data-id="{{item.id}}" bindtap="goDetail">
+    <view class="cover">
+      <image src="{{item.cover}}" mode="aspectFill"></image>
+      <view class="badge {{item.source === 'owner' ? 'owner' : ''}}">{{item.source === 'owner' ? '业主转让' : '项目房源'}}</view>
+    </view>
+    <view class="house-body">
+      <view class="t">{{item.title}}</view>
+      <view class="meta">{{item.rooms}} · {{item.area}}㎡ · {{item.orientation}} · {{item.floor}}层</view>
+      <view class="price">{{item.price}}万 <text class="u">{{item.unitPrice}} 元/㎡</text></view>
+      <view class="tags">
+        <view class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="section" style="padding-bottom: 24rpx;">
+  <view class="box">{{project.intro}}
+
+地址：{{project.address}}
+热线：{{project.hotline}}</view>
+  <view class="cta" style="padding-left:0;padding-right:0;">
+    <view class="btn btn-ghost" bindtap="goInterest">意向登记</view>
+    <view class="btn btn-primary" bindtap="goListings">浏览房源</view>
+  </view>
+</view>

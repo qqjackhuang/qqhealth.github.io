@@ -1,0 +1,23 @@
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  padding: 8rpx 32rpx 0;
+}
+.chip {
+  border: 1rpx solid #eadfd0;
+  background: #fffbf6;
+  border-radius: 999rpx;
+  padding: 10rpx 20rpx;
+  font-size: 24rpx;
+  color: #5c534c;
+}
+.chip.on {
+  background: #c45c26;
+  border-color: #c45c26;
+  color: #fff;
+}
+.card .t { font-weight: 650; font-size: 30rpx; }
+.card .meta { color: #8a7e72; font-size: 24rpx; margin-top: 6rpx; }
+.row-actions { display: flex; gap: 12rpx; margin-top: 16rpx; flex-wrap: wrap; }
+.btn-sm { height: 56rpx; line-height: 56rpx; padding: 0 20rpx; border-radius: 12rpx; font-size: 24rpx; }
